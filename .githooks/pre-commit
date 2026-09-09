@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Pre-commit hook for moonbit-easing
+
+echo "Running pre-commit checks..."
+
+# Run moon check
+echo "Running moon check..."
+moon check
+if [ $? -ne 0 ]; then
+    echo "moon check failed. Commit aborted."
+    exit 1
+fi
+
+# Run moon test
+echo "Running moon test..."
+moon test
+if [ $? -ne 0 ]; then
+    echo "moon test failed. Commit aborted."
+    exit 1
+fi
+
+echo "All checks passed!"
+exit 0

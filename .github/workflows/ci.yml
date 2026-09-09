@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup MoonBit
+      uses: moonbitlang/setup-moonbit@v1
+
+    - name: Moon check
+      run: moon check
+
+    - name: Moon test
+      run: moon test
+
+    - name: Moon build
+      run: moon build
