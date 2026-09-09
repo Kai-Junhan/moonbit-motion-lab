@@ -1,0 +1,14 @@
+{
+  "name": "Kai-Junhan/moonbit-easing",
+  "version": "0.1.0",
+  "readme": "README.md",
+  "repository": "https://github.com/Kai-Junhan/moonbit-easing",
+  "license": "Apache-2.0",
+  "keywords": [
+    "animation",
+    "easing",
+    "interpolation",
+    "utility"
+  ],
+  "description": "Comprehensive easing functions library for MoonBit - classic easing curves, Bezier easing, and animation utilities"
+}

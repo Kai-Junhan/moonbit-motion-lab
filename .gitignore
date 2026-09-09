@@ -1,0 +1,5 @@
+target/
+*.ppm
+*.bmp
+*.png
+.DS_Store
