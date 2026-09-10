@@ -16,6 +16,9 @@ jobs:
     - name: Setup MoonBit
       uses: moonbitlang/setup-moonbit@v1
 
+    - name: Moon format check
+      run: moon fmt --check
+
     - name: Moon check
       run: moon check
 
@@ -24,3 +27,6 @@ jobs:
 
     - name: Moon build
       run: moon build
+
+    - name: Run basic example
+      run: moon run ./examples/basic

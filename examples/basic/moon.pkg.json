@@ -1,6 +1,0 @@
-{
-  "is-main": true,
-  "import": [
-    "Kai-Junhan/moonbit-easing"
-  ]
-}

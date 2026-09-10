@@ -1,0 +1,7 @@
+import {
+  "Kai-Junhan/moonbit-motion-lab" @easing,
+}
+
+options(
+  "is-main": true,
+)
