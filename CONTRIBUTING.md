@@ -1,6 +1,6 @@
-# Contributing to moonbit-easing
+# Contributing to MoonBit Motion Lab
 
-Thank you for your interest in contributing to moonbit-easing!
+Thank you for your interest in contributing to MoonBit Motion Lab!
 
 ## How to Contribute
 
@@ -12,15 +12,15 @@ Thank you for your interest in contributing to moonbit-easing!
 ### Suggesting Features
 - Open an issue with the "enhancement" label
 - Describe the use case and expected behavior
-- Consider if it fits the library's scope (pure mathematical easing functions)
+- Consider whether the change fits the toolkit's scope: parameterized motion curves, custom curve evaluation, sampling, diagnostics, and timeline compilation.
 
 ### Code Contributions
 
 #### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/Kai-Junhan/moonbit-easing.git
-cd moonbit-easing
+git clone https://github.com/Kai-Junhan/moonbit-motion-lab.git
+cd moonbit-motion-lab
 
 # Run tests
 moon test
@@ -41,36 +41,36 @@ moon fmt --check
 #### Code Style
 - Follow existing code patterns
 - Use descriptive variable names
-- Add comments for complex mathematical formulas
+- Add comments only when a mathematical or numerical constraint is not obvious
 - Keep functions focused and composable
 
 #### Testing
-- Add unit tests for new easing functions
-- Test edge cases (t=0, t=1, t<0, t>1)
-- Verify mathematical correctness
+- Add tests for new curve, sampling, diagnostic, or timeline behavior
+- Test endpoints and boundary inputs
+- Verify numerical behavior with tolerances where appropriate
 
 ## Development Principles
 
 ### Scope
-This library focuses on:
-- Pure mathematical easing functions
-- Cubic Bezier curve evaluation
-- Easing composition utilities
+This toolkit focuses on:
+- Parameterized motion curves and custom curve evaluation
+- Cubic Bezier evaluation for user-provided control points
+- Sampling, interpolation, diagnostics, and timeline compilation
 
 Out of scope:
-- Animation timeline management
-- DOM manipulation
-- Rendering/graphics
+- A catalogue of standard easing equations or CSS easing presets
+- DOM manipulation or rendering
+- Animation scheduling or runtime loops
 
 ### Performance
-- Keep functions lightweight
+- Keep numerical functions lightweight
 - Avoid unnecessary allocations
-- Consider caching for expensive computations
+- Prefer deterministic calculations
 
 ### API Design
 - Maintain functional programming style
 - Use clear, consistent naming
-- Provide both simple and advanced APIs
+- Keep curve inputs explicit and composable
 
 ## Questions?
 

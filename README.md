@@ -35,9 +35,9 @@ moon build
 moon run ./examples/basic
 ```
 
-## Resubmission note
+## Project identity
 
-The Mooncakes module is `Kai-Junhan/moonbit-motion-lab`. Rename the GitHub repository to `moonbit-motion-lab` before final submission so its URL, repository name, and package identity consistently reflect the new scope.
+The Mooncakes module and GitHub repository are both `Kai-Junhan/moonbit-motion-lab`. The local project directory should be renamed from `moonbit-easing` to `moonbit-motion-lab` before publishing.
 
 ## License
 

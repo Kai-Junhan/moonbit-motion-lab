@@ -1,14 +1,14 @@
-# moonbit-easing Examples
+# MoonBit Motion Lab Examples
 
-This directory contains example programs demonstrating the use of moonbit-easing.
+This directory contains example programs demonstrating the motion-curve toolkit.
 
 ## Basic Example
 
 The `basic/` directory shows fundamental usage:
-- Applying easing functions to value interpolation
-- Generating animation sequences
-- Using cubic Bezier curves
-- Composing easing functions (chain, reverse, mirror)
+- Applying parameterized motion curves to value interpolation
+- Generating fixed-rate timeline frames
+- Evaluating custom cubic Bezier curves
+- Inspecting curve diagnostics
 
 ## Running Examples
 
@@ -20,31 +20,17 @@ moon run
 ## Example Output
 
 The basic example demonstrates:
-1. Linear vs eased interpolation
-2. Different easing curve families (quad, cubic, elastic, bounce)
-3. Custom Bezier curves
-4. CSS cubic-bezier presets
-5. Easing composition utilities
+1. A parameterized spring curve
+2. Custom Bezier curve evaluation
+3. Curve profiling and endpoint diagnostics
+4. Sequential timeline compilation
 
-## Integration with moonbit-color
+## Integration with other MoonBit projects
 
-For smooth color animations, combine with moonbit-color:
-
-```moonbit
-let red = @color.RGB::from_int(255, 0, 0)
-let blue = @color.RGB::from_int(0, 0, 255)
-
-// Generate 60 frames with easing
-let frames = @easing.ease_sequence(0.0, 1.0, 60, @easing.ease_out_cubic)
-for t in frames {
-  let color = @color.RGB::lerp(red, blue, t)
-  println(color.to_hex())
-}
-```
+The package can be combined with rendering or color libraries by passing sampled values to those libraries. This project itself stays renderer-independent.
 
 ## More Examples Coming Soon
 
-- UI animation patterns
-- Physics simulation curves
+- Curve tuning and diagnostics
 - Data visualization transitions
-- Game development use cases
+- Fixed-rate timeline export

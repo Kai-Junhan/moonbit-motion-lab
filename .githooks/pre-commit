@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Pre-commit hook for moonbit-easing
+# Pre-commit hook for MoonBit Motion Lab
 
 echo "Running pre-commit checks..."
 
