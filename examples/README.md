@@ -1,36 +1,21 @@
 # MoonBit Motion Lab Examples
 
-This directory contains example programs demonstrating the motion-curve toolkit.
+The examples demonstrate how Motion Lab verifies and compiles curves supplied by an application or by a dedicated easing package.
 
 ## Basic Example
 
-The `basic/` directory shows fundamental usage:
-- Applying parameterized motion curves to value interpolation
-- Generating fixed-rate timeline frames
-- Evaluating custom cubic Bezier curves
-- Inspecting curve diagnostics
+`basic/` runs three complete workflows:
+
+1. An application supplies its own smoothstep curve and receives a deterministic `CurveReport`.
+2. The application checks the curve against a strict endpoint, monotonicity, and overshoot policy.
+3. The application compiles sequential value transitions into fixed-rate numeric frames, then rejects a curve whose overshoot violates the same policy.
 
 ## Running Examples
 
 ```bash
-cd examples/basic
-moon run
+moon run ./examples/basic
 ```
 
-## Example Output
+## Integration Boundary
 
-The basic example demonstrates:
-1. A parameterized spring curve
-2. Custom Bezier curve evaluation
-3. Curve profiling and endpoint diagnostics
-4. Sequential timeline compilation
-
-## Integration with other MoonBit projects
-
-The package can be combined with rendering or color libraries by passing sampled values to those libraries. This project itself stays renderer-independent.
-
-## More Examples Coming Soon
-
-- Curve tuning and diagnostics
-- Data visualization transitions
-- Fixed-rate timeline export
+The example intentionally defines its curve locally. In a real project, the same `MotionFn` can wrap a function selected from `Zlj6566/moonbit-easing` or another curve provider. Motion Lab does not duplicate that provider's named formulas or presets; it consumes a curve as data-processing input and returns diagnostics, policy results, and reproducible frames.

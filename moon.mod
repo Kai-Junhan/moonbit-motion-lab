@@ -1,6 +1,6 @@
 name = "Kai-Junhan/moonbit-motion-lab"
 
-version = "0.1.0"
+version = "0.1.1"
 
 readme = "README.md"
 
@@ -11,12 +11,10 @@ license = "Apache-2.0"
 keywords = [
   "motion",
   "animation",
-  "easing",
-  "spring",
-  "bezier",
   "sampling",
-  "interpolation",
+  "timeline",
   "diagnostics",
+  "quality-assurance",
 ]
 
-description = "Motion curve toolkit for MoonBit: parameterized curves, cubic Bezier, sampling, diagnostics, and animation value generation"
+description = "Motion-curve quality assurance and deterministic timeline compilation for MoonBit"

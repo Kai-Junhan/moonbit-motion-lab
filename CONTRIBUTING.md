@@ -53,9 +53,8 @@ moon fmt --check
 
 ### Scope
 This toolkit focuses on:
-- Parameterized motion curves and custom curve evaluation
-- Cubic Bezier evaluation for user-provided control points
-- Sampling, interpolation, diagnostics, and timeline compilation
+- Caller-supplied `MotionFn` evaluation and curve quality checks
+- Sampling, interpolation, diagnostics, and deterministic timeline compilation
 
 Out of scope:
 - A catalogue of standard easing equations or CSS easing presets

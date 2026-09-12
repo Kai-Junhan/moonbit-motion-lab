@@ -1,29 +1,47 @@
 # MoonBit Motion Lab
 
-MoonBit Motion Lab is a **motion-curve composition and quality-assurance toolkit** for MoonBit. It does not publish a catalogue of named, fixed easing equations or CSS easing presets.
+MoonBit Motion Lab is a **motion-curve quality-assurance and deterministic timeline toolkit** for MoonBit. It starts after an application has selected a curve, whether the function was written locally or supplied by a separate easing package.
 
-## Project boundary
+It deliberately does **not** publish named easing equations, CSS easing presets, spring/back formulas, or a cubic-Bezier curve factory. That is the responsibility of an easing library. Motion Lab evaluates the resulting `MotionFn` against product constraints, generates reproducible numeric fixtures, and compiles renderer-independent value timelines.
 
-The project starts after a developer has chosen or designed a curve. It provides:
+## What it provides
 
-- parameterized motion primitives (`back_in`, `back_out`, `spring_out`)
-- custom cubic-Bezier evaluation without CSS preset aliases
-- deterministic curve sampling and application-value frame generation
-- numerical curve reports: min/max, maximum speed, peak-speed time, monotonicity, and endpoint error
-- renderer-independent sequential timelines that compile transitions into fixed-rate frames
-
-Standard named easing collections are intentionally out of scope. This boundary avoids duplicating maintained easing-function packages and makes the project useful for animation tuning, visual regression tests, and data-visualization transitions.
+- the shared `MotionFn` function contract for caller-owned curves
+- deterministic sampling, interpolation, local velocity, monotonicity, and overshoot measurements
+- `CurveReport` numerical diagnostics: min/max, maximum speed, peak-speed time, monotonicity, and endpoint error
+- `CurvePolicy` and `check` for explicit acceptance requirements: endpoint tolerance, monotonicity, overshoot, and speed limits
+- `MotionTimeline` for sequential value transitions and fixed-rate frame generation
 
 ## Quick start
 
 ```moonbit
-let spring = fn(t : Double) -> Double { @motion.spring_out(t, 4.0, 2.0) }
-let report = @motion.profile(spring, 120)
+let smoothstep = fn(t : Double) -> Double { t * t * (3.0 - 2.0 * t) }
+let policy = @motion.CurvePolicy::strict()
+let result = @motion.check(smoothstep, 120, policy)
+
 let timeline = @motion.MotionTimeline::new()
-timeline.append(0.0, 100.0, 0.6, spring)
-timeline.append(100.0, 160.0, 0.4, @motion.linear)
+timeline.append(0.0, 100.0, 0.6, smoothstep)
+timeline.append(100.0, 160.0, 0.4, smoothstep)
 let frames = timeline.frames(60)
 ```
+
+The function may instead come from another package:
+
+```moonbit
+let selected_curve = fn(t : Double) -> Double { /* invoke an external easing function */ t }
+let report = @motion.profile(selected_curve, 120)
+```
+
+## Project boundary
+
+`Zlj6566/moonbit-easing` and comparable packages own the selection and implementation of easing formulas. Motion Lab owns curve **inspection**, **acceptance checking**, **deterministic numeric output**, and **timeline compilation**. It is therefore useful when a project needs to prove a selected curve meets a product constraint or needs reproducible values for a renderer, golden test, or offline pipeline.
+
+Out of scope:
+
+- standard or named easing-function catalogues
+- CSS `ease`, `ease-in`, `ease-out`, or `ease-in-out` aliases
+- spring, back, bounce, elastic, or cubic-Bezier formula implementations
+- DOM manipulation, rendering, animation scheduling, or runtime loops
 
 ## Verification
 
@@ -34,10 +52,6 @@ moon test
 moon build
 moon run ./examples/basic
 ```
-
-## Project identity
-
-The Mooncakes module and GitHub repository are both `Kai-Junhan/moonbit-motion-lab`. The local project directory should be renamed from `moonbit-easing` to `moonbit-motion-lab` before publishing.
 
 ## License
 
